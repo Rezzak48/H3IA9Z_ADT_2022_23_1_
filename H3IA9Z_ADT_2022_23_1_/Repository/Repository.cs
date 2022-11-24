@@ -17,20 +17,19 @@ namespace Repository
         {
             return this.cntx.Set<T>();
         }
-
-        public T GetOne(int id)
-        {
-            throw new NotImplementedException();
-        }
-
+        // Get back to it later
+        public abstract T GetOne(int id);
         public void Insert(T entity)
         {
-            throw new NotImplementedException();
+            cntx.Set<T>().Add(entity);
+
+            cntx.SaveChanges();
         }
 
         public void Remove(T entity)
         {
-            throw new NotImplementedException();
+            cntx.Set<T>().Remove(entity);
+            cntx.SaveChanges();
         }
     }
 }
