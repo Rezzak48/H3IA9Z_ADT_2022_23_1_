@@ -13,6 +13,11 @@ namespace H3IA9Z_ADT_2022_23_1_Repository
     {
         public MovieRepository(ChooseYourMovieDbContext DbContext) : base(DbContext) { }
 
+        public override Movie GetOne(int id)
+        {
+            return this.GetAll().SingleOrDefault(mov => mov.Id == id);
+        }
+
         public void UpdatePrice(int id, int newprice)
         {
             var movie = this.GetOne(id);
