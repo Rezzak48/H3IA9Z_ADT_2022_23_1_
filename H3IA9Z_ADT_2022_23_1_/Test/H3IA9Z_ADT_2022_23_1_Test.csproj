@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Logic\H3IA9Z_ADT_2022_23_1_Logic.csproj" />
+    <ProjectReference Include="..\Models\H3IA9Z_ADT_2022_23_1_Models.csproj" />
+    <ProjectReference Include="..\Repository\H3IA9Z_ADT_2022_23_1_Repository.csproj" />
+  </ItemGroup>
+
+</Project>
