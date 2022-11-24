@@ -11,13 +11,20 @@ namespace H3IA9Z_ADT_2022_23_1_Repository
 {
     public class MovieRepository : Repository<Movie>, IMovieRepository
     {
-        public MovieRepository(ChooseYourMovieDbContext cntx) : base(cntx)
-        {
-        }
+        public MovieRepository(ChooseYourMovieDbContext DbContext) : base(DbContext) { }
 
         public void UpdatePrice(int id, int newprice)
         {
-            throw new NotImplementedException();
+            var movie = this.GetOne(id);
+            if (movie == null)
+            {
+                throw new Exception("The movie doesn't exist");
+            }
+            else
+            {
+                movie.Price = newprice;
+                this.cntx.SaveChanges();
+            }
         }
     }
 }
