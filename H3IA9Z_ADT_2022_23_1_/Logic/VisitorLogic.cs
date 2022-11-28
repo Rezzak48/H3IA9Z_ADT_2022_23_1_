@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace H3IA9Z_ADT_2022_23_1_Logic
 {
-    internal class VisitorLogic
+    public class VisitorLogic
     {
     }
 }

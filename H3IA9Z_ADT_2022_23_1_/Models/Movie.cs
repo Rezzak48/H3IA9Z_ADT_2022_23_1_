@@ -26,7 +26,7 @@ namespace Models
 
         public override string ToString()
         {
-            return $"\n{this.Id,3} |  {this.Duration} hours {this.Price,10} MAD {this.Category,10}\t {this.Name,-1}";
+            return $"\n{this.Id,3} |  {this.Duration} hours {this.Price,10} HUF {this.Category,10}\t {this.Name,-1}";
         }
 
         public virtual ICollection<Reservation> Reservation { get; }
