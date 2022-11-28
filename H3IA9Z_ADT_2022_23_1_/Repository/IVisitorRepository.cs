@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace H3IA9Z_ADT_2022_23_1_Repository
 {
-    internal interface IVisitor : IRepository<Visitor>
+    public interface IVisitorRepository : IRepository<Visitor>
     {
         void UpdateAddress(int id, string newAddress);
     }

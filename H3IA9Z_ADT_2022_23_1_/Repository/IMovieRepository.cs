@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace H3IA9Z_ADT_2022_23_1_Repository
 {
-    internal interface IMovieRepository : IRepository<Movie>
+    public interface IMovieRepository : IRepository<Movie>
     {
         void UpdatePrice(int id, int newprice);
     }
