@@ -17,7 +17,7 @@ namespace H3IA9Z_ADT_2022_23_1_Logic
             this.imovieRepository = imovieRepository;
             this.ireservationsRepository = ireservationsRepository;
         }
-        public Movie AddNewArtist(Movie newMovie)
+        public Movie AddNewMovie(Movie newMovie)
         {
             this.imovieRepository.Insert(newMovie);
             return newMovie;

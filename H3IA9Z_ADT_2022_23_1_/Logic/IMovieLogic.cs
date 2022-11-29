@@ -9,7 +9,7 @@ namespace H3IA9Z_ADT_2022_23_1_Logic
 {
     public interface IMovieLogic
     {
-        public Movie AddNewArtist(Movie newMovie);
+        public Movie AddNewMovie(Movie newMovie);
         public void DeleteMovie(int id);
         Movie GetMovie(int id);
         IEnumerable<Movie> GetAllMovies();
