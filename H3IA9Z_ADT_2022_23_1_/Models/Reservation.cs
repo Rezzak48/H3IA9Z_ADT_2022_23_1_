@@ -9,24 +9,34 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    [Table("reservations")]
     public class Reservation
     {
         public Reservation()
         {
+
         }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
+
         public DateTime DateTime { get; set; }
 
+        [NotMapped]
+        [JsonIgnore]
         public virtual Visitor Visitor { get; set; }
 
-
+        [ForeignKey(nameof(Visitor))]
         public int? VisitorId { get; set; }
 
 
-
+        [NotMapped]
+        [JsonIgnore]
         public virtual Movie Movie { get; set; }
 
-
+        [ForeignKey(nameof(Movie))]
         public int? MovieId { get; set; }
 
 

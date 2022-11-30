@@ -103,7 +103,7 @@ namespace H3IA9Z_ADT_2022_23_1_Logic
 
         public void UpdateAddress(Visitor vis)
         {
-            this.iVisitorRepository.UpdateAddress(vis.Id, vis.City);
+            this.iVisitorRepository.UpdateAddress(vis.Id, vis.Address);
         }
         public List<KeyValuePair<int, int>> WorstVisitor()
         {
