@@ -9,27 +9,40 @@ using System.Threading.Tasks;
 
 namespace Models
 {
+    [Table("visitors")]
     public class Visitor
     {
         public Visitor()
         {
             this.Reservation = new HashSet<Reservation>();
         }
-
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [MaxLength(50)]
+        [Required]
         public string Name { get; set; }
 
-        public string City { get; set; }
+        [MaxLength(100)]
+        [Required]
+        public string Address { get; set; }
 
+        [Required]
         public int PhoneNumber { get; set; }
+
+        [MaxLength(100)]
+        [Required]
         public string Email { get; set; }
+
+        [NotMapped]
+        [JsonIgnore]
         public virtual ICollection<Reservation> Reservation { get; }
 
 
         public override string ToString()
         {
-            return $"\n{this.Id,3} | {this.Name,-20} {this.Email,-28} {this.PhoneNumber,10}  \t {this.City}";
+            return $"\n{this.Id,3} | {this.Name,-20} {this.Email,-28} {this.PhoneNumber,10}  \t {this.Address}";
         }
     }
 
