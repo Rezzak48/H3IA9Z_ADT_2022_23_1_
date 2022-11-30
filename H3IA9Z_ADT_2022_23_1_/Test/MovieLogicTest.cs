@@ -69,14 +69,14 @@ namespace Test
         }
 
         [Test]
-        public void MostPaidArtistTest()
+        public void MostPaidMovieTest()
         {
             var result = ML.MostSellMovie();
             var expected = new List<KeyValuePair<string, int>>() { new KeyValuePair<string, int>("movie5", 500) };
             Assert.That(result, Is.EqualTo(expected));
         }
         [Test]
-        public void LessPaidArtistTest()
+        public void LessPaidMovieTest()
         {
             var result = ML.LessSellMovie();
             var expected = new List<KeyValuePair<string, int>>() { new KeyValuePair<string, int>("movie1", 100) };
