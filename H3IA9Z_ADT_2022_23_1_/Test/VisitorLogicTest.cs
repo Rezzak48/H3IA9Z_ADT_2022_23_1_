@@ -22,11 +22,11 @@ namespace H3IA9Z_ADT_2022_23_1_Test
             var MockReservationsRepository = new Mock<IReservationsRepository>();
             var vistors = new List<Visitor>()
             {
-                new Visitor(){ Id =1,Address="Budapest1",Email="vis1@gmail.com",Name="vis1",PhoneNumber=11111111},
-                new Visitor(){Id =2,Address="Budapest2",Email="vis2@gmail.com",Name="vis2",PhoneNumber=22222222},
-                new Visitor(){Id =3,Address="Budapest3",Email="vis3@gmail.com",Name="vis3",PhoneNumber=33333333},
-                new Visitor(){Id =4,Address="Budapest4",Email="vis4@gmail.com",Name="vis4",PhoneNumber=44444444},
-                new Visitor(){Id =5,Address="Budapest5",Email="vis5@gmail.com",Name="vis5",PhoneNumber=55555555}
+                new Visitor(){ Id =1,Address="Oktogont1",Email="vis1@gmail.com",Name="vis1",PhoneNumber=11111111},
+                new Visitor(){Id =2,Address="Oktogont2",Email="vis2@gmail.com",Name="vis2",PhoneNumber=22222222},
+                new Visitor(){Id =3,Address="Oktogont3",Email="vis3@gmail.com",Name="vis3",PhoneNumber=33333333},
+                new Visitor(){Id =4,Address="Oktogont4",Email="vis4@gmail.com",Name="vis4",PhoneNumber=44444444},
+                new Visitor(){Id =5,Address="Oktogont5",Email="vis5@gmail.com",Name="vis5",PhoneNumber=55555555}
             }.AsQueryable();
             var Reservations = new List<Reservation>()
             {
@@ -48,14 +48,14 @@ namespace H3IA9Z_ADT_2022_23_1_Test
         [Test]
         public void AddNewVisitorTest_Throws()
         {
-            Visitor vis = new Visitor() { Address = "budapest6", Email = "vis6@gmail.com", Name = null, PhoneNumber = 66666666 };
+            Visitor vis = new Visitor() { Address = "Oktogont6", Email = "vis6@gmail.com", Name = null, PhoneNumber = 99999999 };
             //Arrange
             Assert.Throws<ArgumentException>(() => VL.AddNewVis(vis));
         }
         [Test]
         public void AddNewVisitorTest()
         {
-            Visitor vis = new Visitor() { Address = "budapest6", Email = "vis6@gmail.com", Name = "vis6", PhoneNumber = 66666666 };
+            Visitor vis = new Visitor() { Address = "Oktogont6", Email = "vis6@gmail.com", Name = "vis6", PhoneNumber = 99999999 };
             Visitor vis6 = VL.AddNewVis(vis);
             Assert.That(vis6.Name, Is.EqualTo("vis6"));
         }
@@ -77,7 +77,7 @@ namespace H3IA9Z_ADT_2022_23_1_Test
         public void WorstVisitor()
         {
             var result = VL.WorstVisitor();
-            var expected = new List<KeyValuePair<int, int>>() { new KeyValuePair<int, int>(5, 1) };
+            var expected = new List<KeyValuePair<int, int>>() { new KeyValuePair<int, int>(1, 1) };
             Assert.That(result, Is.EqualTo(expected));
         }
 

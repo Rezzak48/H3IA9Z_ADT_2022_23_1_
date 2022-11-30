@@ -13,14 +13,13 @@ namespace Client
         {
             System.Threading.Thread.Sleep(8000);
             RestService rest = new RestService("http://localhost:18972");
-
             var MenuForVisitorsadmin = new ConsoleMenu()
                 .Add("** READ By Id", () => ReadVisitorById(rest))
                 .Add("** READ All", () => ReadAllVisitors(rest))
                 .Add("** DELETE", () => DeleteVisitor(rest))
-                .Add("** Best Visitor (non-crud)", () => BestVisitor(rest))
-                .Add("** Worst Visitor (non-crud)", () => WorstVisitor(rest))
-                .Add("** Reservations count (non-crud) ", () => CountResers(rest))
+                .Add("** Best Visitor ", () => BestVisitor(rest))
+                .Add("** Worst Visitor ", () => WorstVisitor(rest))
+                .Add("** Reservations count  ", () => CountResers(rest))
                 .Add("** GO BACK TO MENU", ConsoleMenu.Close)
                 .Configure(config =>
                 {
@@ -45,9 +44,9 @@ namespace Client
                 .Add("** READ All", () => ReadAllMovie(rest))
                 .Add("** UpdateCost", () => UpdateMoviecost(rest))
                 .Add("** DELETE", () => DeleteMovie(rest))
-                .Add("** Movies Earnings (non-crud)", () => Movieearrings(rest))
-                .Add("** Most Paid Movie (non-crud)", () => MostPaidArt(rest))
-                .Add("** Less Paid Movie (non-crud)", () => LessPaidArt(rest))
+                .Add("** Movies Earnings ", () => Movieearrings(rest))
+                .Add("** Most Paid Movie ", () => MostPaidArt(rest))
+                .Add("** Less Paid Movie ", () => LessPaidArt(rest))
                 .Add("** GO BACK TO MENU", ConsoleMenu.Close)
                 .Configure(config =>
                 {
@@ -66,9 +65,6 @@ namespace Client
                     config.Selector = "*** ";
                     config.SelectedItemBackgroundColor = ConsoleColor.Yellow;
                 });
-      
-            
-
             var menuForAdministrator = new ConsoleMenu(args, level: 0)
                 .Add("** Visitors", () => MenuForVisitorsadmin.Show())
                 .Add("** Movies ", () => MenuForMovies.Show())
