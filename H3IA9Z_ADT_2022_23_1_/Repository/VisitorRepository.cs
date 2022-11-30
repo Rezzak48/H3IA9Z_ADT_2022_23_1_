@@ -26,7 +26,7 @@ namespace H3IA9Z_ADT_2022_23_1_Repository
             }
             else
             {
-                vis.City = newAddress;
+                vis.Address = newAddress;
                 this.cntx.SaveChanges();
             }
         }
