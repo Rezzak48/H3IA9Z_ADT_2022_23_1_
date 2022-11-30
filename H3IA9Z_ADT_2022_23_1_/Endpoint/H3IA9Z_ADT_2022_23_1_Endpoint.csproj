@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Data\H3IA9Z_ADT_2022_23_1_Data.csproj" />
     <ProjectReference Include="..\Logic\H3IA9Z_ADT_2022_23_1_Logic.csproj" />
     <ProjectReference Include="..\Models\H3IA9Z_ADT_2022_23_1_Models.csproj" />
