@@ -38,17 +38,17 @@ namespace Data
             Movie movie5 = new Movie() { Id = 5, Name = "movie5", Category = "Drama", Duration = 1, Price = 20000 };
             Movie movie6 = new Movie() { Id = 6, Name = "movie6", Category = "Documentary", Duration = 1, Price = 30000 };
 
-            Visitor vis1 = new Visitor() { Id = 1, Name = "Visitor 1 ", PhoneNumber = 0610203050, City = "Budapest", Email = "vis1@gmail.com" };
-            Visitor vis2 = new Visitor() { Id = 2, Name = "Visitor2", PhoneNumber = 0610203750, City = "Budapest", Email = "vis2@gmail.com" };
-            Visitor vis3 = new Visitor() { Id = 3, Name = "Visitor3", PhoneNumber = 0610403050, City = "Budapest", Email = "vis3@gmail.com" };
-            Visitor vis4 = new Visitor() { Id = 4, Name = "Visitor4", PhoneNumber = 0620203050, City = "Budapest", Email = "vis4@gmail.com" };
-            Visitor vis5 = new Visitor() { Id = 5, Name = "Visitor5", PhoneNumber = 0630203050, City = "Budapest", Email = "vis5@gmail.com" };
-            Visitor vis6 = new Visitor() { Id = 6, Name = "Visitor6", PhoneNumber = 0640203050, City = "Budapest", Email = "vis6@gmail.com" };
-            Visitor vis7 = new Visitor() { Id = 7, Name = "Visitor7", PhoneNumber = 0650203050, City = "Budapest", Email = "vis7@gmail.com" };
-            Visitor vis8 = new Visitor() { Id = 8, Name = "Visitor8", PhoneNumber = 0660203050, City = "Budapest", Email = "vis8@gmail.com" };
-            Visitor vis9 = new Visitor() { Id = 9, Name = "Visitor9", PhoneNumber = 0670203050, City = "Budapest", Email = "vis9@gmail.com" };
-            Visitor vis10 = new Visitor() { Id = 10, Name = "Visitor10", PhoneNumber = 0680203050, City = "Budapest", Email = "vis10@gmail.com" };
-            Visitor vis11 = new Visitor() { Id = 11, Name = "Visitor11", PhoneNumber = 0690203050, City = "Budapest", Email = "vis11@gmail.com" };
+            Visitor vis1 = new Visitor() { Id = 1, Name = "Visitor 1 ", PhoneNumber = 0610203050, Address = "Budapest", Email = "vis1@gmail.com" };
+            Visitor vis2 = new Visitor() { Id = 2, Name = "Visitor2", PhoneNumber = 0610203750, Address = "Budapest", Email = "vis2@gmail.com" };
+            Visitor vis3 = new Visitor() { Id = 3, Name = "Visitor3", PhoneNumber = 0610403050, Address = "Budapest", Email = "vis3@gmail.com" };
+            Visitor vis4 = new Visitor() { Id = 4, Name = "Visitor4", PhoneNumber = 0620203050, Address = "Budapest", Email = "vis4@gmail.com" };
+            Visitor vis5 = new Visitor() { Id = 5, Name = "Visitor5", PhoneNumber = 0630203050, Address = "Budapest", Email = "vis5@gmail.com" };
+            Visitor vis6 = new Visitor() { Id = 6, Name = "Visitor6", PhoneNumber = 0640203050, Address = "Budapest", Email = "vis6@gmail.com" };
+            Visitor vis7 = new Visitor() { Id = 7, Name = "Visitor7", PhoneNumber = 0650203050, Address = "Budapest", Email = "vis7@gmail.com" };
+            Visitor vis8 = new Visitor() { Id = 8, Name = "Visitor8", PhoneNumber = 0660203050, Address = "Budapest", Email = "vis8@gmail.com" };
+            Visitor vis9 = new Visitor() { Id = 9, Name = "Visitor9", PhoneNumber = 0670203050, Address = "Budapest", Email = "vis9@gmail.com" };
+            Visitor vis10 = new Visitor() { Id = 10, Name = "Visitor10", PhoneNumber = 0680203050, Address = "Budapest", Email = "vis10@gmail.com" };
+            Visitor vis11 = new Visitor() { Id = 11, Name = "Visitor11", PhoneNumber = 0690203050, Address = "Budapest", Email = "vis11@gmail.com" };
 
             Reservation reservation1 = new Reservation() { Id = 1, VisitorId = vis1.Id, MovieId = movie1.Id, DateTime = new DateTime(2021, 09, 08) };
             Reservation reservation2 = new Reservation() { Id = 2, VisitorId = vis2.Id, MovieId = movie3.Id, DateTime = new DateTime(2021, 09, 09) };

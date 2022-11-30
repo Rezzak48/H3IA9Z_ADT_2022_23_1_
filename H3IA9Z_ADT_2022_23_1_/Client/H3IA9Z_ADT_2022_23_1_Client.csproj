@@ -7,6 +7,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\H3IA9Z_ADT_2022_23_1_Models.csproj" />
+	  <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+	  <PackageReference Include="ConsoleMenu-simple" Version="2.4.3" />
+	  <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
   </ItemGroup>
 
 </Project>
