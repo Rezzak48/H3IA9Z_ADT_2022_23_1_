@@ -11,6 +11,7 @@ namespace Client
     {
         static void Main(string[] args)
         {
+            //Done
             System.Threading.Thread.Sleep(8000);
             RestService rest = new RestService("http://localhost:18972");
             var MenuForVisitorsadmin = new ConsoleMenu()
