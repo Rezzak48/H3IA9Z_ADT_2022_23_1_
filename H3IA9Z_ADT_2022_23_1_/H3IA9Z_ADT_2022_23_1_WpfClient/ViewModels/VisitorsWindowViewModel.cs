@@ -18,6 +18,8 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
 
         public ObservableCollection<Visitor> Visitors { get; set; }
         private Visitor _selectedVisitor;
+        public IList<KeyValuePair<int, int>> BestVisitors { get; set; }
+        public IList<KeyValuePair<int, int>> WorstVisitors { get; set; }
 
         public Visitor SelectedVisitor
         {
@@ -42,10 +44,14 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
         public RelayCommand AddVisitorCommand { get; set; }
         public RelayCommand EditVisitorCommand { get; set; }
         public RelayCommand DeleteVisitorCommand { get; set; }
+        public RelayCommand BestVisitorCommand { get; set; }
+        public RelayCommand WorstVisitorCommand { get; set; }
 
         public VisitorsWindowViewModel()
         {
             Visitors = new ObservableCollection<Visitor>();
+            BestVisitors = new List<KeyValuePair<int, int>>();
+            WorstVisitors = new List<KeyValuePair<int, int>>();
 
             _apiClient
                 .GetAsync<List<Visitor>>("http://localhost:18972/visitor")
@@ -60,10 +66,37 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
                     });
                 });
 
+            _apiClient
+             .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/Noncrudvis/BestVisitors")
+             .ContinueWith((BestVisit) =>
+             {
+                 Application.Current.Dispatcher.Invoke(() =>
+                 {
+                     BestVisit.Result.ForEach((Bestf) =>
+                     {
+                         BestVisitors.Add(Bestf);
+                     });
+                 });
+             });
+            _apiClient
+              .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/NoncrudVisitor/WorstFans")
+              .ContinueWith((WorstVisit) =>
+              {
+                  Application.Current.Dispatcher.Invoke(() =>
+                  {
+                      WorstVisit.Result.ForEach((Worstf) =>
+                      {
+                          WorstVisitors.Add(Worstf);
+                      });
+                  });
+              });
+
             AddVisitorCommand = new RelayCommand(AddVisitor);
             EditVisitorCommand = new RelayCommand(EditVisitor);
             DeleteVisitorCommand = new RelayCommand(DeleteVisitor);
         }
+
+        #region CRUD
 
         private void AddVisitor()
         {
@@ -114,5 +147,21 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
                     });
                 });
         }
+
+        #endregion CRUD
+
+        #region NON-CRUD
+
+        private void BestMovieMethod()
+        {
+            new BestVisitorWindow().Show();
+        }
+
+        private void WorstMovieMethod()
+        {
+            new WorstVisitorWindow().Show();
+        }
+
+        #endregion NON-CRUD
     }
 }

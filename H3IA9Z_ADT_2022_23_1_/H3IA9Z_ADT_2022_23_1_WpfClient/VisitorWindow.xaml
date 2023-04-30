@@ -46,6 +46,8 @@
             <Button Command="{Binding AddVisitorCommand}" Content="Add Visitor" Margin="10" />
             <Button Command="{Binding EditVisitorCommand}" Content="Edit Visitor" Margin="10" />
             <Button Command="{Binding DeleteVisitorCommand}" Content="Delete Visitor" Margin="10" />
+            <Button Command="{Binding BestVisitorCommand}" Content="Best Visitor" Margin="10" />
+            <Button Command="{Binding WorstVisitorCommand}" Content="Worst Fan" Margin="10" />
         </StackPanel>
     </Grid>
 </Window>

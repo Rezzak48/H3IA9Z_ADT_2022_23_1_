@@ -46,6 +46,9 @@
             <Button Command="{Binding AddMovieCommand}" Content="Add Movie" Margin="10" />
             <Button Command="{Binding EditMovieCommand}" Content="Edit Movie" Margin="10" />
             <Button Command="{Binding DeleteMovieCommand}" Content="Delete Movie" Margin="10" />
+            <Button Command="{Binding MoviesEarningCommand}" Content="Total Movies Earnings" Margin="10" />
+            <Button Command="{Binding MostPaidMovieCommand}" Content="Most Paid Movie" Margin="10" />
+            <Button Command="{Binding LessPaidMovieCommand}" Content="Less Paid Movie" Margin="10" />
         </StackPanel>
     </Grid>
 </Window>
