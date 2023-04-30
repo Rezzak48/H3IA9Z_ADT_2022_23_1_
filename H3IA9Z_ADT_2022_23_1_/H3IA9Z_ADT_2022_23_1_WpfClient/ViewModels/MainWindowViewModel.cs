@@ -13,14 +13,12 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
         public RelayCommand ManageMoviesCommand { get; set; }
         public RelayCommand ManageVisitorsCommand { get; set; }
         public RelayCommand ManageReservationsCommand { get; set; }
-        //public RelayCommand ManageServicesCommand { get; set; }
 
         public MainWindowViewModel()
         {
             ManageMoviesCommand = new RelayCommand(OpenMoviesWindow);
             ManageVisitorsCommand = new RelayCommand(OpenVisitorsWindow);
             ManageReservationsCommand = new RelayCommand(OpenReservationsWindow);
-            //ManageServicesCommand = new RelayCommand(OpenServicesWindow);
         }
 
         //! Windows to create
@@ -32,7 +30,7 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
 
         private void OpenVisitorsWindow()
         {
-            new VisitorsWindow().Show();
+            new VisitorWindow().Show();
         }
 
         private void OpenReservationsWindow()

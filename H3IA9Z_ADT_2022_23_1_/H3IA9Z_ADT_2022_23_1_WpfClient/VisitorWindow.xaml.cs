@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace H3IA9Z_ADT_2022_23_1_WpfClient
 {
     /// <summary>
-    /// Interaction logic for VisitorsWindow.xaml
+    /// Interaction logic for VisitorWindow.xaml
     /// </summary>
-    public partial class VisitorsWindow : Window
+    public partial class VisitorWindow : Window
     {
-        public VisitorsWindow()
+        public VisitorWindow()
         {
             InitializeComponent();
         }

@@ -1,4 +1,4 @@
-﻿<Window x:Class="H3IA9Z_ADT_2022_23_1_WpfClient.MoviesWindow"
+﻿<Window x:Class="H3IA9Z_ADT_2022_23_1_WpfClient.VisitorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:H3IA9Z_ADT_2022_23_1_WpfClient"
         xmlns:vms="clr-namespace:H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels"
         mc:Ignorable="d"
-        Title="MoviesWindow" Height="450" Width="800">
+        Title="VisitorWindow" Height="450" Width="800">
     <Window.DataContext>
-        <vms:MoviesWindowViewModel />
+        <vms:VisitorsWindowViewModel />
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -16,9 +16,9 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <ListBox
-            ItemsSource="{Binding Movies}"
-            SelectedItem="{Binding SelectedMovie}"
-            SelectedIndex="{Binding SelectedMovieIndex}"
+            ItemsSource="{Binding Visitors}"
+            SelectedItem="{Binding SelectedVisitor}"
+            SelectedIndex="{Binding SelectedVisitorIndex}"
             Grid.Column="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -30,22 +30,22 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0" Content="{Binding Name}"></Label>
-                        <Label Grid.Column="1" Content="{Binding Category}"></Label>
-                        <Label Grid.Column="2" Content="{Binding Price}" ContentStringFormat=" {0} $"></Label>
+                        <Label Grid.Column="1" Content="{Binding Address}"></Label>
+                        <Label Grid.Column="2" Content="{Binding PhoneNumber}"></Label>
                     </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
         <StackPanel Grid.Column="1">
-            <Label Content="Movie name" Margin="10" />
-            <TextBox Text="{Binding SelectedMovie.Name}" Margin="10"></TextBox>
-            <Label Content="Movie category" />
-            <TextBox Text="{Binding SelectedMovie.Category}" Margin="10"></TextBox>
-            <Label Content="Movie price" />
-            <TextBox Text="{Binding SelectedMovie.Price}" Margin="10"></TextBox>
-            <Button Command="{Binding AddMovieCommand}" Content="Add Movie" Margin="10" />
-            <Button Command="{Binding EditMovieCommand}" Content="Edit Movie" Margin="10" />
-            <Button Command="{Binding DeleteMovieCommand}" Content="Delete Movie" Margin="10" />
+            <Label Content="Visitor Name" Margin="0 10 10 0" />
+            <TextBox Text="{Binding SelectedVisitor.Name}" Margin="10"></TextBox>
+            <Label Content="Visitor Address" />
+            <TextBox Text="{Binding SelectedVisitor.Address}" Margin="10"></TextBox>
+            <Label Content="Visitor PhoneNumber" />
+            <TextBox Text="{Binding SelectedVisitor.PhoneNumber}" Margin="10"></TextBox>
+            <Button Command="{Binding AddVisitorCommand}" Content="Add Visitor" Margin="10" />
+            <Button Command="{Binding EditVisitorCommand}" Content="Edit Visitor" Margin="10" />
+            <Button Command="{Binding DeleteVisitorCommand}" Content="Delete Visitor" Margin="10" />
         </StackPanel>
     </Grid>
 </Window>
