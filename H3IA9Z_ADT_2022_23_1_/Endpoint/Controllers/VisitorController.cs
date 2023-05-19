@@ -11,8 +11,10 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
     [ApiController]
     public class VisitorController : ControllerBase
     {
-        IVisitorLogic VisL;
-        IHubContext<SignalRHub> hub;
+        private IVisitorLogic VisL;
+
+        private IHubContext<SignalRHub> hub;
+
         public VisitorController(IVisitorLogic visL, IHubContext<SignalRHub> hub)
         {
             VisL = visL;
@@ -25,7 +27,6 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
         {
             return VisL.GetAllVisitors();
         }
-
 
         // GET /visitors/5
         [HttpGet("{id}")]
@@ -42,7 +43,6 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
             this.hub.Clients.All.SendAsync("VisitorCreated", value);
         }
 
-
         // PUT /visitors
         [HttpPut]
         public void Put([FromBody] Visitor value)
@@ -50,7 +50,6 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
             VisL.UpdateAddress(value);
             this.hub.Clients.All.SendAsync("VisitorUpdated", value);
         }
-
 
         // DELETE /visitors/5
         [HttpDelete("{id}")]
@@ -60,6 +59,5 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
             VisL.DeleteVisitor(id);
             this.hub.Clients.All.SendAsync("VisitorDeleted", visToDelete);
         }
-
     }
 }

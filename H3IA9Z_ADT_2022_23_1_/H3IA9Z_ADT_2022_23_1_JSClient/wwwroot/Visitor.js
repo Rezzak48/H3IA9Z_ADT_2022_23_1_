@@ -1,8 +1,8 @@
-﻿let movies = [];
+﻿let visitors = [];
 let connection = null;
 getdata();
 setupSignalR();
-let movieIdToUpdate = -1;
+let visitorIdToUpdate = -1;
 
 function setupSignalR() {
     connection = new signalR.HubConnectionBuilder()
@@ -10,14 +10,14 @@ function setupSignalR() {
         .configureLogging(signalR.LogLevel.Information)
         .build();
 
-    connection.on("MovieCreated", (user, message) => {
+    connection.on("VisitorCreated", (user, message) => {
         getdata();
     });
 
-    connection.on("MovieDeleted", (user, message) => {
+    connection.on("VisitorDeleted", (user, message) => {
         getdata();
     });
-    connection.on("MovieUpdated", (user, message) => {
+    connection.on("VisitorUpdated", (user, message) => {
         getdata();
     });
 
@@ -36,38 +36,34 @@ async function start() {
     }
 };
 async function getdata() {
-    await fetch('http://localhost:18972/movie')
-
+    await fetch('http://localhost:18972/visitor')
         .then(x => x.json())
         .then(y => {
-            movies = y;
-            console.log(movies);
+            visitors = y;
             display();
         });
 }
 function display() {
     document.getElementById('resultarea').innerHTML = "";
-    movies.forEach(t => {
+    visitors.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td><td>"
-            + t.name + "</td><td>" + t.category + "</td><td>" + t.price + "$</td><td>" +
+            + t.name + "</td><td>" + t.city + "</td><td>" + t.email + "</td><td>" +
             `<button type="button" onclick="remove(${t.id})">Delete</button>` +
-            `<button type="button" onclick="showupdate(${t.id})">Update Cost</button>`
+            `<button type="button" onclick="showupdate(${t.id})">Update City</button>`
             + "</td></tr>";
     });
-    document.getElementById('moviename').value = "";
-    document.getElementById('moviecategory').value = "";
-    document.getElementById('moviecost').value = "";
+    document.getElementById('visitorname').value = "";
+    document.getElementById('visitorcity').value = "";
+    document.getElementById('visitoremail').value = "";
 }
 function showupdate(id) {
-    //document.getElementById('movienameToUpdate').value = movies.find(t => t['id'] == id)['name'];
-    //document.getElementById('moviecategoryToUpdate').value = movies.find(t => t['id'] == id)['category'];
-    document.getElementById('moviecostToUpdate').value = artists.find(t => t['id'] == id)['price'];
+    document.getElementById('visitorcityToUpdate').value = visitors.find(t => t['id'] == id)['city'];
     document.getElementById('updateformdiv').style.display = 'flex';
-    movieIdToUpdate = id;
+    visitorIdToUpdate = id;
 }
 function remove(id) {
-    fetch('http://localhost:18972/movie' + id, {
+    fetch('http://localhost:18972/visitor/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -80,17 +76,18 @@ function remove(id) {
         .catch((error) => { console.error('Error:', error); });
 }
 function create() {
-    let Moviename = document.getElementById('moviename').value;
-    let Moviecategory = document.getElementById('moviecategory').value;
-    let Movietcost = document.getElementById('moviecost').value;
-    fetch('http://localhost:18972/movie', {
+    let Visitorname = document.getElementById('visitorname').value;
+    let Visitorcity = document.getElementById('visitorcity').value;
+    let Visitoremail = document.getElementById('visitoremail').value;
+
+    fetch('http://localhost:18972/visitor', {
         method: 'POST',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-            { Category: Moviecategory, Name: Moviename, Price: Movietcost })
+            { City: Visitorcity, Name: Visitorname, Email: Visitoremail })
     })
         .then(response => response)
         .then(data => {
@@ -101,20 +98,17 @@ function create() {
 }
 function update() {
     document.getElementById('updateformdiv').style.display = 'none';
-    //let MovienameToUpd = document.getElementById('movienameToUpdate').value;
-    //let MoviecategoryToUpd = document.getElementById('moviecategoryToUpdate').value;
-    let MovietcostToUpd = document.getElementById('artistcostToUpdate').value;
-    let Movietcategory = artists.find(t => t['id'] == artistIdToUpdate)['category'];
-    let Movietname = artists.find(t => t['id'] == artistIdToUpdate)['name'];
-    fetch('http://localhost:18972/movie', {
+    let VisitorcityToUpd = document.getElementById('visitorcityToUpdate').value;
+    let Visitoremail = visitors.find(t => t['id'] == visitorIdToUpdate)['email'];
+    let Visitorname = visitors.find(t => t['id'] == visitorIdToUpdate)['name'];
+    fetch('http://localhost:18972/visitor', {
         method: 'PUT',
         headers: {
             'Accept': 'application/json, text/plain, */*',
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-            //{ Category: MoviecategoryToUpd, Name: MovienameToUpd, Id: movieIdToUpdate })
-            { Name: Movietname, Category: Movietcategory, Price: MovietcostToUpd, Id: movieIdToUpdate })
+            { Name: Visitorname, Email: Visitoremail, City: VisitorcityToUpd, Id: visitorIdToUpdate })
     })
         .then(response => response)
         .then(data => {

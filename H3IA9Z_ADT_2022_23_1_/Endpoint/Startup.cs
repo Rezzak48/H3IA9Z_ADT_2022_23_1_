@@ -43,8 +43,7 @@ namespace Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:18972")); //! kifach
-                                                         //.WithOrigins("http://localhost:23079")); //! kifach
+                .WithOrigins("http://localhost:18972"));
 
             app.UseRouting();
             app.UseAuthorization();
