@@ -50,15 +50,16 @@ function display() {
     movies.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.id + "</td><td>"
-            + t.name + "</td><td>" +
+            + t.name + "</td><td>" + t.category + "</td><td>" + t.price + "$</td><td>" +
             `<button type="button" onclick="remove(${t.id})">Delete</button>` +
-            `<button type="button" onclick="showupdate(${t.id})">Update</button>`
+            `<button type="button" onclick="showupdate(${t.id})">Update Cost</button>`
             + "</td></tr>";
     });
 }
 function showupdate(id) {
-    document.getElementById('movienameToUpdate').value = movies.find(t => t['id'] == id)['name'];
-    document.getElementById('moviecategoryToUpdate').value = movies.find(t => t['id'] == id)['category'];
+    //document.getElementById('movienameToUpdate').value = movies.find(t => t['id'] == id)['name'];
+    //document.getElementById('moviecategoryToUpdate').value = movies.find(t => t['id'] == id)['category'];
+    document.getElementById('moviecostToUpdate').value = artists.find(t => t['id'] == id)['price'];
     document.getElementById('updateformdiv').style.display = 'flex';
     movieIdToUpdate = id;
 }
@@ -78,6 +79,7 @@ function remove(id) {
 function create() {
     let Moviename = document.getElementById('moviename').value;
     let Moviecategory = document.getElementById('moviecategory').value;
+    let Movietcost = document.getElementById('moviecost').value;
     fetch('http://localhost:18972/movie', {
         method: 'POST',
         headers: {
@@ -85,7 +87,7 @@ function create() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-            { Category: Moviecategory, Name: Moviename })
+            { Category: Moviecategory, Name: Moviename, Price: Movietcost })
     })
         .then(response => response)
         .then(data => {
@@ -96,8 +98,11 @@ function create() {
 }
 function update() {
     document.getElementById('updateformdiv').style.display = 'none';
-    let MovienameToUpd = document.getElementById('movienameToUpdate').value;
-    let MoviecategoryToUpd = document.getElementById('moviecategoryToUpdate').value;
+    //let MovienameToUpd = document.getElementById('movienameToUpdate').value;
+    //let MoviecategoryToUpd = document.getElementById('moviecategoryToUpdate').value;
+    let MovietcostToUpd = document.getElementById('artistcostToUpdate').value;
+    let Movietcategory = artists.find(t => t['id'] == artistIdToUpdate)['category'];
+    let Movietname = artists.find(t => t['id'] == artistIdToUpdate)['name'];
     fetch('http://localhost:18972/movie', {
         method: 'PUT',
         headers: {
@@ -105,7 +110,8 @@ function update() {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(
-            { Category: MoviecategoryToUpd, Name: MovienameToUpd, Id: movieIdToUpdate })
+            //{ Category: MoviecategoryToUpd, Name: MovienameToUpd, Id: movieIdToUpdate })
+            { Name: Movietname, Category: Movietcategory, Price: MovietcostToUpd, Id: movieIdToUpdate })
     })
         .then(response => response)
         .then(data => {
