@@ -11,11 +11,13 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        IMovieLogic MovL;
-        IHubContext<SignalRHub> hub;
-        public MovieController(IMovieLogic mvL, IHubContext<SignalRHub> hub)
+        private IMovieLogic ML;
+
+        private IHubContext<SignalRHub> hub;
+
+        public MovieController(IMovieLogic mL, IHubContext<SignalRHub> hub)
         {
-            MovL = mvL;
+            ML = mL;
             this.hub = hub;
         }
 
@@ -23,43 +25,39 @@ namespace H3IA9Z_ADT_2022_23_1_Endpoint.Controllers
         [HttpGet]
         public IEnumerable<Movie> Get()
         {
-            return MovL.GetAllMovies();
+            return ML.GetAllMovies();
         }
-
 
         // GET /movies/5
         [HttpGet("{id}")]
         public Movie Get(int id)
         {
-            return MovL.GetMovie(id);
+            return ML.GetMovie(id);
         }
 
         // POST /movies
         [HttpPost]
         public void Post([FromBody] Movie value)
         {
-            MovL.AddNewMovie(value);
+            ML.AddNewMovie(value);
             this.hub.Clients.All.SendAsync("MovieCreated", value);
         }
-
 
         // PUT /movies
         [HttpPut]
         public void Put([FromBody] Movie value)
         {
-            MovL.UpdateMovieCost(value);
+            ML.UpdateMovieCost(value);
             this.hub.Clients.All.SendAsync("MovieUpdated", value);
         }
-
 
         // DELETE /movies/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            var movieToDelete = this.MovL.GetMovie(id);
-            MovL.DeleteMovie(id);
+            var movieToDelete = this.ML.GetMovie(id);
+            ML.DeleteMovie(id);
             this.hub.Clients.All.SendAsync("MovieDeleted", movieToDelete);
         }
-
     }
 }

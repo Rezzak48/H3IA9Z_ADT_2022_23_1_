@@ -26,12 +26,10 @@ namespace Endpoint
             services.AddTransient<IVisitorLogic, VisitorLogic>();
             services.AddTransient<IReservationLogic, ReservationLogic>();
             services.AddTransient<IMovieRepository, MovieRepository>();
-            services.AddTransient< IVisitorRepository, VisitorRepository>();
+            services.AddTransient<IVisitorRepository, VisitorRepository>();
             services.AddTransient<IReservationsRepository, ReservationRepository>();
             services.AddTransient<ChooseYourMovieDbContext, ChooseYourMovieDbContext>();
             services.AddSignalR();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,7 +43,8 @@ namespace Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:23079"));
+                .WithOrigins("http://localhost:18972")); //! kifach
+                                                         //.WithOrigins("http://localhost:23079")); //! kifach
 
             app.UseRouting();
             app.UseAuthorization();

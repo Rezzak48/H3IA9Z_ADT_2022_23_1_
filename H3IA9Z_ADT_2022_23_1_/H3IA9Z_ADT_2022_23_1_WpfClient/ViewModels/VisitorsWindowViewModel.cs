@@ -66,30 +66,30 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
                     });
                 });
 
-            _apiClient
-             .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/Noncrudvis/BestVisitors")
-             .ContinueWith((BestVisit) =>
-             {
-                 Application.Current.Dispatcher.Invoke(() =>
-                 {
-                     BestVisit.Result.ForEach((Bestf) =>
-                     {
-                         BestVisitors.Add(Bestf);
-                     });
-                 });
-             });
-            _apiClient
-              .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/NoncrudVisitor/WorstFans")
-              .ContinueWith((WorstVisit) =>
-              {
-                  Application.Current.Dispatcher.Invoke(() =>
-                  {
-                      WorstVisit.Result.ForEach((Worstf) =>
-                      {
-                          WorstVisitors.Add(Worstf);
-                      });
-                  });
-              });
+            //_apiClient
+            // .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/Noncrudvis/BestVisitors")
+            // .ContinueWith((BestVisit) =>
+            // {
+            //     Application.Current.Dispatcher.Invoke(() =>
+            //     {
+            //         BestVisit.Result.ForEach((Bestf) =>
+            //         {
+            //             BestVisitors.Add(Bestf);
+            //         });
+            //     });
+            // });
+            //_apiClient
+            //  .GetAsync<List<KeyValuePair<int, int>>>("http://localhost:18972/NoncrudVisitor/WorstFans")
+            //  .ContinueWith((WorstVisit) =>
+            //  {
+            //      Application.Current.Dispatcher.Invoke(() =>
+            //      {
+            //          WorstVisit.Result.ForEach((Worstf) =>
+            //          {
+            //              WorstVisitors.Add(Worstf);
+            //          });
+            //      });
+            //  });
 
             AddVisitorCommand = new RelayCommand(AddVisitor);
             EditVisitorCommand = new RelayCommand(EditVisitor);

@@ -71,42 +71,42 @@ namespace H3IA9Z_ADT_2022_23_1_WpfClient.ViewModels
                     });
                 });
 
-            _apiClient
-              .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/MovieEarnings")
-              .ContinueWith((moviesEar) =>
-              {
-                  Application.Current.Dispatcher.Invoke(() =>
-                  {
-                      moviesEar.Result.ForEach((movieea) =>
-                      {
-                          TotalMoviesEarnings.Add(movieea);
-                      });
-                  });
-              });
-            _apiClient
-               .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/Mostpaidmov")
-               .ContinueWith((MostMov) =>
-               {
-                   Application.Current.Dispatcher.Invoke(() =>
-                   {
-                       MostMov.Result.ForEach((mostmovie) =>
-                       {
-                           MostPaidMovie.Add(mostmovie);
-                       });
-                   });
-               });
-            _apiClient
-              .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/Lesspaidmo")
-              .ContinueWith((MostMov) =>
-              {
-                  Application.Current.Dispatcher.Invoke(() =>
-                  {
-                      MostMov.Result.ForEach((mostmovie) =>
-                      {
-                          LessPaidMovie.Add(mostmovie);
-                      });
-                  });
-              });
+            //_apiClient
+            //  .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/MovieEarnings")
+            //  .ContinueWith((moviesEar) =>
+            //  {
+            //      Application.Current.Dispatcher.Invoke(() =>
+            //      {
+            //          moviesEar.Result.ForEach((movieea) =>
+            //          {
+            //              TotalMoviesEarnings.Add(movieea);
+            //          });
+            //      });
+            //  });
+            //_apiClient
+            //   .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/Mostpaidmov")
+            //   .ContinueWith((MostMov) =>
+            //   {
+            //       Application.Current.Dispatcher.Invoke(() =>
+            //       {
+            //           MostMov.Result.ForEach((mostmovie) =>
+            //           {
+            //               MostPaidMovie.Add(mostmovie);
+            //           });
+            //       });
+            //   });
+            //_apiClient
+            //  .GetAsync<List<KeyValuePair<string, int>>>("http://localhost:18972/Noncrudmovie/Lesspaidmo")
+            //  .ContinueWith((MostMov) =>
+            //  {
+            //      Application.Current.Dispatcher.Invoke(() =>
+            //      {
+            //          MostMov.Result.ForEach((mostmovie) =>
+            //          {
+            //              LessPaidMovie.Add(mostmovie);
+            //          });
+            //      });
+            //  });
 
             AddMovieCommand = new RelayCommand(AddMovie);
             EditMovieCommand = new RelayCommand(EditMovie);
