@@ -60,14 +60,12 @@ function display() {
     document.getElementById('moviecost').value = "";
 }
 function showupdate(id) {
-    //document.getElementById('movienameToUpdate').value = movies.find(t => t['id'] == id)['name'];
-    //document.getElementById('moviecategoryToUpdate').value = movies.find(t => t['id'] == id)['category'];
-    document.getElementById('moviecostToUpdate').value = artists.find(t => t['id'] == id)['price'];
+    document.getElementById('moviecostToUpdate').value = movies.find(t => t['id'] == id)['price'];
     document.getElementById('updateformdiv').style.display = 'flex';
     movieIdToUpdate = id;
 }
 function remove(id) {
-    fetch('http://localhost:18972/movie' + id, {
+    fetch('http://localhost:18972/movie/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -82,7 +80,7 @@ function remove(id) {
 function create() {
     let Moviename = document.getElementById('moviename').value;
     let Moviecategory = document.getElementById('moviecategory').value;
-    let Movietcost = document.getElementById('moviecost').value;
+    let Movietcost = document.getElementById('movietcost').value;
     fetch('http://localhost:18972/movie', {
         method: 'POST',
         headers: {
@@ -99,13 +97,14 @@ function create() {
         })
         .catch((error) => { console.error('Error:', error); });
 }
+
 function update() {
     document.getElementById('updateformdiv').style.display = 'none';
     //let MovienameToUpd = document.getElementById('movienameToUpdate').value;
     //let MoviecategoryToUpd = document.getElementById('moviecategoryToUpdate').value;
-    let MovietcostToUpd = document.getElementById('artistcostToUpdate').value;
-    let Movietcategory = artists.find(t => t['id'] == artistIdToUpdate)['category'];
-    let Movietname = artists.find(t => t['id'] == artistIdToUpdate)['name'];
+    let MovietcostToUpd = document.getElementById('moviecostToUpdate').value;
+    let Movietcategory = movies.find(t => t['id'] == movieIdToUpdate)['category'];
+    let Movietname = movies.find(t => t['id'] == movieIdToUpdate)['name'];
     fetch('http://localhost:18972/movie', {
         method: 'PUT',
         headers: {

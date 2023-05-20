@@ -46,16 +46,16 @@ async function getdata() {
 function display() {
     document.getElementById('resultarea').innerHTML = "";
     reservations.forEach(t => {
-        if (t.movieId != null && t.visitorid != null) {
-            document.getElementById('resultarea').innerHTML +=
-                "<tr><td>" + t.id + "</td><td>"
-                + t.visitorId + "</td><td>" + t.movieId + "</td><td>" + t.dateTime + "</td><td>" +
-                `<button type="button" onclick="remove(${t.id})">Delete</button>` +
-                `<button type="button" onclick="showupdate(${t.id})">Update Date</button>`
-                + "</td></tr>";
-        }
+        // if (t.visitorId != null && t.movieId != null) {
+        document.getElementById('resultarea').innerHTML +=
+            "<tr><td>" + t.id + "</td><td>"
+            + t.visitorId + "</td><td>" + t.movieId + "</td><td>" + t.dateTime + "</td><td>" +
+            `<button type="button" onclick="remove(${t.id})">Delete</button>` +
+            `<button type="button" onclick="showupdate(${t.id})">Update Date</button>`
+            + "</td></tr>";
+        //  }
     });
-    document.getElementById('reservationvisitorid').value = "";
+    document.getElementById('reservationvisid').value = "";
     document.getElementById('reservationmovieid').value = "";
     document.getElementById('reservationdate').value = "";
 }
@@ -78,7 +78,7 @@ function remove(id) {
         .catch((error) => { console.error('Error:', error); });
 }
 function create() {
-    let Reservisitorid = document.getElementById('reservationvisitorid').value;
+    let Reservisitorid = document.getElementById('reservationvisid').value;
     let Resermovieid = document.getElementById('reservationmovieid').value;
     let Reserdate = document.getElementById('reservationdate').value;
 

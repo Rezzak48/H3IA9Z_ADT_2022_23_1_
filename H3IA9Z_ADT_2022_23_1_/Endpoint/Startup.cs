@@ -43,7 +43,7 @@ namespace Endpoint
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:18972"));
+                .WithOrigins("http://localhost:23070"));
 
             app.UseRouting();
             app.UseAuthorization();
